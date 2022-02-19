@@ -1,0 +1,40 @@
+.footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 100%;
+    padding: 20px 20px;
+    background-color: #1394f0;
+    border-radius: 5px;
+    box-shadow: inset 5px 80px 100px rgba(167, 62, 194, 0.65), 3px 3px 15px grey;
+}
+
+.footer input {
+    width: 40%;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.footer button{
+    background-color: #e3b510;
+    border: none;
+    width: 60px;
+    font-size: 15px;
+    color: #dfeaf2;
+    border-radius: 2px;
+    height: 30px;
+    box-shadow: inset 2px 2px 2px #dfeaf2, 2px 2px 2px grey;
+    text-shadow: 1px 1px 1px grey;
+}
+
+.footer button:active {
+
+    box-shadow: inset 1px 1px 1px grey, 1px 1px 1px #dfeaf2;
+    text-shadow: 1px 1px 1px black;
+    font-size: 14px;
+
+
+}

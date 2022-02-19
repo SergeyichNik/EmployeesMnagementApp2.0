@@ -1,0 +1,20 @@
+.filterBtn {
+    margin-top: 10px;
+    background-color: #e3b510;
+    border: none;
+    font-size: 15px;
+    color: #dfeaf2;
+    border-radius: 2px;
+    height: 30px;
+    box-shadow: inset 2px 2px 2px #dfeaf2, 2px 2px 2px grey;
+    text-shadow: 1px 1px 1px grey;
+}
+
+.filterBtn:active {
+
+    box-shadow: inset 1px 1px 1px grey, 1px 1px 1px #dfeaf2;
+    text-shadow: 1px 1px 1px black;
+    font-size: 14px;
+
+
+}

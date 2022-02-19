@@ -1,0 +1,36 @@
+.appInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 20px;
+    background-color: #1394f0;
+    border-radius: 5px;
+    box-shadow: inset 5px 80px 100px rgba(167, 62, 194, 0.80), 3px 3px 15px grey;
+}
+
+.appInfo div {
+    font-size: 30px;
+    color: #dfeaf2;
+    text-shadow: 3px 3px 3px black;
+    line-height: 50px;
+}
+
+.appInfo img {
+    width: 110px;
+    margin-left: 20px;
+    background-color: rgba(19, 16, 227, .3);
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 4px #dfeaf2, 2px 2px 5px black;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.appInfo h1 {
+    text-align: end;
+    font-size: 35px;
+    line-height: 35px;
+}

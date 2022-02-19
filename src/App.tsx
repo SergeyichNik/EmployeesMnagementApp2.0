@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import AppInfo from "./component/AppInfo";
+import {SearchInput} from "./component/SearchInput/SearchInput";
+import {EmpItemsList} from "./component/EmpItemsList/EmpItemsList";
+import {EmpAddInput} from "./component/EmpAddInput/EmpAddInput";
+
+export type IncomingDataType = {
+    id: string,
+    name: string,
+    salary: number,
+    promo: boolean,
+    increase: boolean
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const incomingData = [
+        {id: "1", name: 'Alex V.', salary: 2000, promo: false, increase: false},
+        {id: "2", name: 'Alex V.', salary: 2000, promo: false, increase: false},
+        {id: "3", name: 'Alex V.', salary: 2000, promo: false, increase: false},
+    ]
+
+    return (
+        <div className="App">
+            <AppInfo/>
+            <SearchInput/>
+            <EmpItemsList data={incomingData}/>
+            <EmpAddInput/>
+        </div>
+    );
 }
 
 export default App;
