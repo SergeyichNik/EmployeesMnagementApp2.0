@@ -10,22 +10,47 @@
     box-shadow: 2px 2px 5px grey;
 }
 
+.name {
+    cursor: pointer;
+}
+
 
 .iconWrapper {
-    padding: 2px 0;
+    position: relative;
+    transition: 2s all;
 }
 
 .iconWrapper .trashIcon {
+    left: -80px;
+    top: 100%;
+    transform: translateY(-50%);
+    position: absolute;
     width: 30px;
     margin-left: 12px;
 }
 
 .iconWrapper .starIcon {
+    position: absolute;
+    top: 100%;
+    transform: translateY(-50%);
+    left: -25px;
     width: 32px;
     margin-left: 9px;
+    transition: 2s all;
+}
+
+.iconWrapper .starIconHide {
+    left: 25px;
+    display: none;
+    transition: 2s all;
+
 }
 
 .iconWrapper .cookiesIcon {
+    position: absolute;
+    top: 100%;
+    transform: translateY(-50%);
+    left: -120px;
     width: 28px;
 }
 

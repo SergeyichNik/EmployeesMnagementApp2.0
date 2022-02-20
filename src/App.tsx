@@ -51,13 +51,22 @@ function App() {
         setUserProp({...userProp, [name]: value});
     }
 
+    const isIncrease = (id: string) => {
+        setData(data.map<any>(item => {
+            if (item.id === id) {
+                return {...item, increase: !item.increase}
+            }
+            return item
+        }))
+        console.log(id)
+    }
 
     return (
         <div className="App">
             <AppInfo/>
             <SearchInput/>
-            <EmpItemsList data={data}/>
-            <EmpAddInput onAddNewEmp={onAddNewEmp} userProp={userProp} setUserProp={onChangeUserProp}/>
+            <EmpItemsList isIncrease={isIncrease}  data={data}/>
+            <EmpAddInput  onAddNewEmp={onAddNewEmp} userProp={userProp} setUserProp={onChangeUserProp}/>
         </div>
     );
 }
