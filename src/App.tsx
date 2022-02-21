@@ -22,12 +22,36 @@ export type IncomingDataType = {
 
 function App() {
     const incomingData = [
-        {id: v1(), name: 'Alex V.', salary: 2000, promo: false, increase: false},
-        {id: v1(), name: 'Alex V.', salary: 2000, promo: false, increase: false},
-        {id: v1(), name: 'Alex V.', salary: 2000, promo: false, increase: false},
+        {id: v1(), name: 'Alex V.', salary: 1000, promo: false, increase: false},
+        {id: v1(), name: 'Bob V.', salary: 600, promo: false, increase: false},
+        {id: v1(), name: 'John V.', salary: 2000, promo: false, increase: false},
     ]
+
+    const buttonsKit = [
+        {name: 'all employees'},
+        {name: 'increased'},
+        {name: 'promoted'},
+        {name: 'salary more than 1000$'}
+    ]
+
     const [data, setData] = useState(incomingData)
     const [userProp, setUserProp] = useState<UserPropType>({name: '', salary: ''})
+    const [filterBtn, setFilterBtn] = useState('all employees')
+    const [searchInput, setSearchInput] = useState('')
+
+    let filteredData = data
+
+    if (filterBtn === 'increased') {
+        filteredData = data.filter((item) => item.increase)
+    } else if (filterBtn === 'promoted') {
+        filteredData = data.filter((item) => item.promo)
+    } else if (filterBtn === 'salary more than 1000$') {
+        filteredData = data.filter((item) => item.salary > 1000)
+    }
+
+    if (searchInput) {
+       filteredData = data.filter((item) => item.name.indexOf(searchInput) > -1)
+    }
 
     const onAddNewEmp = () => {
         if (userProp.name === '' || userProp.salary === '') {
@@ -43,7 +67,6 @@ function App() {
             setData([...data, newEmp]);
             setUserProp({...userProp, name: '', salary: ''})
         }
-
     }
 
     const onChangeUserProp = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,22 +74,46 @@ function App() {
         setUserProp({...userProp, [name]: value});
     }
 
-    const isIncrease = (id: string) => {
+    const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchInput(e.currentTarget.value);
+    }
+
+    const isIncrease = (id: string, dataValue?: string) => {
         setData(data.map<any>(item => {
             if (item.id === id) {
-                return {...item, increase: !item.increase}
+                switch (dataValue) {
+                    case 'promo':
+                        return {...item, [dataValue]: !item[dataValue]};
+                    case 'increase':
+                        return {...item, [dataValue]: !item[dataValue]}
+                }
             }
             return item
         }))
-        console.log(id)
     }
+
+    const removeEmp = (id: string) => {
+        setData(data.filter((item) => item.id !== id))
+    }
+
+    let empPromoNum = data.filter((item) => item.promo).length
+    let empNum = data.length
 
     return (
         <div className="App">
-            <AppInfo/>
-            <SearchInput/>
-            <EmpItemsList isIncrease={isIncrease}  data={data}/>
-            <EmpAddInput  onAddNewEmp={onAddNewEmp} userProp={userProp} setUserProp={onChangeUserProp}/>
+            <AppInfo  empNum={empNum} empPromoNum={empPromoNum}/>
+            <SearchInput onChangeSearchInput={onChangeSearchInput}
+                         searchInput={searchInput}
+                         setFilterBtn={setFilterBtn}
+                         buttonsKit={buttonsKit}/>
+            <EmpItemsList isIncrease={isIncrease}
+                          data={filteredData}
+                          removeEmp={removeEmp}
+            />
+            <EmpAddInput  onAddNewEmp={onAddNewEmp}
+
+                          userProp={userProp}
+                          setUserProp={onChangeUserProp}/>
         </div>
     );
 }

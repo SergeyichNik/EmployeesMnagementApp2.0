@@ -12,10 +12,14 @@
 
 .name {
     cursor: pointer;
+    border: none;
+    background-color: #fff;
+    font-size: 20px;
 }
 
 
 .iconWrapper {
+    box-sizing: border-box;
     position: relative;
     transition: 2s all;
 }
